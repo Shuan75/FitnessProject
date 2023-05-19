@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cal">
+
+<select id="showSchedule" parameterType = "String" resultType = "ScheduleDTO">
+    		SELECT
+    			subject,startDate,endDate,memo
+    		FROM
+    			schedule
+    		WHERE
+    			id = #{id}
+    		ORDER BY
+    			num
+    		DESC
+    	</select>
+    	<insert id="addSchedule" parameterType = "ScheduleDTO">
+	    	INSERT INTO
+	    		schedule(id,subject,startDate,endDate,memo)
+	    	VALUES
+	    		(#{id},#{subject},#{startDate},#{endDate},#{memo})
+    	</insert>
+
+	<!-- <resultMap type="CalDTO" id="calMap">
+		<result property="c_start" column="c_start"/>
+		<result property="c_end" column="c_end"/>
+	</resultMap>
+	<select id="showS" resultMap="calMap">
+		SELECT C_ID, C_TITLE,
+		TO_char(c_start, 'YYYY-MM-DD"T"HH24:MI:SS') C_START,
+		TO_char(c_end, 'YYYY-MM-DD"T"HH24:MI:SS') C_END,
+		C_ALLDAY
+		FROM FT_CALENDAR
+	</select> -->
+	
+</mapper>
+
+
+
+
+
